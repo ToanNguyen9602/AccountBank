@@ -1,0 +1,55 @@
+<div class="grid min-w800">
+    <div class="col-8">
+        <div class="flex flex-column">
+            <p-toast position="top-center" key="tc"></p-toast> 
+            <div class=" title-menu h-4rem justify-content-center align-items-center">
+                <h3>
+                    Update User Information
+                </h3>
+            </div>
+            <form (ngSubmit)="onSubmit()" >
+                <div class="field grid">
+                    <label for="AccountId" class="col-fixed" style="width: 150px;">Account Id:</label>
+                    <div class="col flex align-items-center">
+                    <p-inputNumber class="inputNum" name="accId" [(ngModel)]="account.accId" id="AccountId" prefix="ACC" (onBlur)="onAccIdInput($event)"> </p-inputNumber>                       
+                    </div>
+                </div>
+
+                <ng-container *ngIf="account.balance >= 0">
+                    <div class="field grid">
+                        <label for="cusName" class="col-fixed" style="width:150px">Name:</label>
+                        <div class="col">
+                            <input pInputText [required]="true" name="customerName" id="cusName" [(ngModel)]="account.customerName" />
+                        </div>
+                    </div>
+                    <div class="field grid">
+                        <label for="email" class="col-fixed" style="width:150px">Email:</label>
+                        <div class="col">
+                            <input pInputText [required]="true" id="email" name="email" [(ngModel)]="account.email" />      
+                        </div>
+                    </div>
+                    <div class="field grid">
+                        <label for="phone" class="col-fixed" style="width:150px">Phone:</label>
+                        <div class="col">
+                            <input pInputText [required]="true" id="phone" name="phone" [(ngModel)]="account.phone" />      
+                        </div>
+                    </div>
+                    <div class="field grid justify-content-center">
+                        
+                        <p-button type="ngSubmit" label="Submit" styleClass="p-button-rounded"></p-button>
+                    </div>
+                </ng-container>
+            </form>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="flex flex-column justify-content-center align-items-center">
+            <h3>Account Balance</h3>
+            <h3 *ngIf="account.balance >= 0">
+                {{account.balance}} VND
+            </h3>
+        </div>
+
+    </div>
+    
+</div>

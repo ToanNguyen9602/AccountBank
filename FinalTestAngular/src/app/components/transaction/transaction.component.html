@@ -1,0 +1,61 @@
+<div class="grid min-w800">
+    <div class="col-8">
+        <div class="flex flex-column">
+            <p-toast position="top-center" key="tc"></p-toast> 
+            <div class=" title-menu h-4rem justify-content-center align-items-center">
+                <h3>
+                    Transaction Details
+                </h3>
+            </div>
+            <div class=" bg-indigo-500 font-bold text-white m-2 px-5 py-3 border-round">
+            <form [formGroup]="transactionForm" (ngSubmit)="onSubmit()" >
+                <div class="field grid">
+                    <label for="AccountId" class="col-fixed" style="width: 150px;">Account Id:</label>
+                    <div class="col flex align-items-center">
+                    <p-inputNumber class="inputNum" formControlName="accountId" id="AccountId" prefix="ACC" (onBlur)="onAccIdInput($event)"> </p-inputNumber>                       
+                      
+                    </div>
+                </div>
+                <ng-container *ngIf="account != null">
+                    <div class="field grid">
+                        <label for="transMoney" class="col-fixed" style="width:150px">Amount:</label>
+                        <div class="col">
+                            <p-inputNumber class="inputNum" formControlName="transMoney" id="transMoney" mode="currency" currency="VND" locale="vi-VN"> </p-inputNumber>
+                        </div>
+                    </div>
+                    <div class="field grid">
+                        <label for="dot" class="col-fixed" style="width:150px">Date Of Transaction:</label>
+                        <div class="col">
+                            <p-calendar class="inputNum" dateFormat="dd/mm/yy" formControlName="dot" id="dot"></p-calendar>
+                        </div>
+                    </div>
+                    <div class="flex align-items-center" style="max-width: 500px">
+                        <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 150px; min-height: 50px">
+                            <p-radioButton value="1" formControlName="transType" id="transType1"></p-radioButton>
+                            <label for="transType1" class="ml-2">Deposit</label>
+                        </div>
+                        <div class="flex align-items-center justify-content-center m-2 border-round" style="min-width: 150px; min-height: 50px">
+                            <p-radioButton value="2" formControlName="transType" id="transType2"></p-radioButton>
+                            <label for="transType2" class="ml-2">Withdraw</label>
+                        </div>
+                    </div>
+                    <div class="field grid justify-content-center">
+                        
+                        <p-button type="ngSubmit" label="Submit" styleClass="p-button-rounded"></p-button>
+                    </div>
+                </ng-container>
+            </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="flex flex-column justify-content-center align-items-center">
+            <h3>Account Balance</h3>
+            <h3 *ngIf="account != null">
+                {{account.balance}} VND
+            </h3>
+        </div>
+
+    </div>
+    
+</div>

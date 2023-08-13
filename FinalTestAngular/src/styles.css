@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "/node_modules/primeng/resources/themes/lara-light-blue/theme.css";
+@import "/node_modules/primeng/resources/primeng.css";
+@import '/node_modules/primeflex/primeflex.css';
+
+body {
+    font-family: Tahoma, sans-serif;
+    background-color: var(--surface-overlay);
+}
+
+.h-80 {
+    height: 80% !important;
+}
+.col .p-element {
+    width: 100%;
+    height: 80%;
+}
+.title-menu {
+    text-align: center;
+}
+.min-w800 {
+    min-width: 750px;
+}
+.inputNum {
+    min-width: 250px;
+}
+.p-inputnumber.p-component {
+    width: 100%;
+}
+h3 {
+    text-align: center;
+}
